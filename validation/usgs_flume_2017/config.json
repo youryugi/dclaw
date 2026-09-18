@@ -1,0 +1,79 @@
+{
+  "sensor_dataset": "dataset/Sensor data from debris-flow experiments",
+  "lidar_dataset": "dataset/Lidar data for gate release experiment at the USGS Debris-Flow Flume 24 and 25 May 2017",
+  "runs": {
+    "2017-05-23": {
+      "volume_m3": 8.0,
+      "initial_normal_depth_m": 0.979,
+      "observed_initial_pore_pressure_ratio": 0.637,
+      "gate_angle_profile": [[0.0, 0.0], [0.211, 10.0], [0.431, 45.0], [0.702, 89.0], [0.72, 90.0]],
+      "sensor_file": "2017_05_23_archive.csv"
+    },
+    "2017-05-24": {
+      "volume_m3": 8.0,
+      "initial_normal_depth_m": 0.946,
+      "observed_initial_pore_pressure_ratio": 0.639,
+      "gate_angle_profile": [[0.0, 0.0], [0.239, 10.0], [0.467, 45.0], [0.742, 89.0], [0.76, 90.0]],
+      "sensor_file": "2017_05_24_archive.csv",
+      "lidar_file": "170524_184440_prof_ts300-650_s1_editvcorr_header.txt"
+    },
+    "2017-05-25": {
+      "volume_m3": 10.0,
+      "initial_normal_depth_m": 1.197,
+      "observed_initial_pore_pressure_ratio": 0.625,
+      "gate_angle_profile": [[0.0, 0.0], [0.258, 10.0], [0.523, 45.0], [0.824, 89.0], [0.85, 90.0]],
+      "sensor_file": "2017_05_25_archive.csv",
+      "lidar_file": "170525_182342_prof_ts180-280_s1_editvcorr_header.txt"
+    }
+  },
+  "gauge_positions_m": [2.5, 31.7, 65.4, 80.0],
+  "arrival_depth_threshold_m": 0.02,
+  "arrival_min_duration_s": 0.05,
+  "sensor_output_rate_hz": 100,
+  "lidar_bin_width_m": 0.25,
+  "lidar_initial_baseline_s": 5.0,
+  "lidar_initial_pile_threshold_m": 0.10,
+  "lidar_depth_threshold_m": 0.03,
+  "lidar_min_front_support_bins": 3,
+  "lidar_front_max_speed_m_s": 20.0,
+  "lidar_front_comparison_max_m": 65.0,
+  "model": {
+    "flume_width_m": 2.0,
+    "initial_pore_pressure_ratio": 0.60,
+    "rho_f_kg_m3": 1000.0,
+    "rho_s_kg_m3": 2700.0,
+    "solid_volume_fraction": 0.60,
+    "critical_solid_fraction": 0.64,
+    "reference_solid_volume_fraction": 0.60,
+    "reference_permeability_m2": 1e-10,
+    "basal_friction_angle_deg": 40.0,
+    "characteristic_grain_size_m": 0.005,
+    "pore_fluid_viscosity_pa_s": 0.001,
+    "compressibility_constant": 0.01,
+    "reference_stress_pa": 1000.0,
+    "source_method": 2,
+    "compressibility_method": 1,
+    "use_finite_gate": false,
+    "gate_height_m": 1.9
+  },
+  "parameter_sets": {
+    "paper2014": {
+      "use_observed_initial_pore_pressure": true,
+      "rho_f_kg_m3": 1100.0,
+      "rho_s_kg_m3": 2700.0,
+      "solid_volume_fraction": 0.62,
+      "critical_solid_fraction": 0.64,
+      "reference_solid_volume_fraction": 0.60,
+      "reference_permeability_m2": 5e-9,
+      "basal_friction_angle_deg": 40.7,
+      "characteristic_grain_size_m": 0.001,
+      "pore_fluid_viscosity_pa_s": 0.005,
+      "compressibility_constant": 0.01,
+      "reference_stress_pa": 1000.0,
+      "source_method": 0,
+      "compressibility_method": 0,
+      "use_finite_gate": true,
+      "gate_height_m": 1.9
+    }
+  }
+}

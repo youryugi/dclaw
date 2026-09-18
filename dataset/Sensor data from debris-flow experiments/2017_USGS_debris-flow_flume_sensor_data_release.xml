@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>Richard M. Iverson</origin>
+        <origin>Maciej Obryk</origin>
+        <pubdate>20190410</pubdate>
+        <title>Sensor data from debris-flow experiments conducted in May, 2017, at the USGS debris-flow flume, HJ Andrews Experimental Forest, Blue River, Oregon</title>
+        <geoform>Three .csv files and three .pdf files</geoform>
+        <pubinfo>
+          <pubplace>Vancouver, WA</pubplace>
+          <publish>U.S. Geological Survey</publish>
+        </pubinfo>
+        <onlink>https://doi.org/10.5066/P9NAFXW7</onlink>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>The files consist of two types: tabulated data files and graphical map files. Data files consist of three .csv files, representing three experiment dates (2017_05_23, 2017_05_24, 2017_05_25). Each of these files contains multiple columns of data, with each column representing either a time measurement or the value of a physical quantity measured at that time (e.g., flow depth, pore pressure, normal stress, etc.). Map files consist of three .pdf files, each representing an experiment date listed above. The maps show the thickness of  the sediment deposited onto the runout pad after each experiment. Sediment thickness was determined using photogrammetery software from Agisoft.</abstract>
+      <purpose>These data were collected as part of a long-term program of large-scale experimentation at the USGS debris-flow flume.  The chief focus of the three experiments performed in 2017 and represented in this data set was twofold: (1) measurement of evolving basal stresses as the flume headgate opened, and (2) measurement of broadband seismic energy radiated by the moving debris flows. Seismological data are archived at: https://service.iris.edu/ph5ws/</purpose>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <mdattim>
+          <sngdate>
+            <caldate>20170523</caldate>
+          </sngdate>
+          <sngdate>
+            <caldate>20170524</caldate>
+          </sngdate>
+          <sngdate>
+            <caldate>20170525</caldate>
+          </sngdate>
+        </mdattim>
+      </timeinfo>
+      <current>ground condition</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>As needed</update>
+    </status>
+    <spdom>
+      <bounding>
+        <westbc>-122.255</westbc>
+        <eastbc>-122.2538</eastbc>
+        <northbc>44.215</northbc>
+        <southbc>44.214</southbc>
+      </bounding>
+    </spdom>
+    <keywords>
+      <theme>
+        <themekt>USGS Thesaurus</themekt>
+        <themekey>Debris-flow</themekey>
+        <themekey>Landslide</themekey>
+        <themekey>Avalanche</themekey>
+        <themekey>Seismic</themekey>
+      </theme>
+      <theme>
+        <themekt>USGS Metadata Identifier</themekt>
+        <themekey>USGS:5b44ee03e4b060350a1408f1</themekey>
+      </theme>
+      <place>
+        <placekt>USGS debris-flow flume, HJ Andrews Experimental Forest</placekt>
+        <placekey>Blue River, Oregon</placekey>
+        <placekey>Lat 44.2145 deg N., Long 122.254 deg W</placekey>
+      </place>
+    </keywords>
+    <accconst>none</accconst>
+    <useconst>None. Data are unclassified and no legal restrictions pertain to their use. Users are advised to read metadata throughly to understand appropriate use and data limitations.</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntperp>
+          <cntper>Richard M. Iverson</cntper>
+          <cntorg>U.S. Geological Survey</cntorg>
+        </cntperp>
+        <cntaddr>
+          <addrtype>mailing and physical</addrtype>
+          <address>1300 SE Cardinal Court, Building 10, Suite 100</address>
+          <city>Vancouver</city>
+          <state>Washington</state>
+          <postal>98683</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>360 993 8920</cntvoice>
+        <cntemail>riverson@usgs.gov</cntemail>
+      </cntinfo>
+    </ptcontac>
+  </idinfo>
+  <dataqual>
+    <attracc>
+      <attraccr>No formal attribute accuracy tests were conducted</attraccr>
+    </attracc>
+    <logic>No formal logical accuracy tests were conducted</logic>
+    <complete>Data set is considered complete for the information presented, as described in the abstract. Users are advised to read the rest of the metadata record carefully for additional details.</complete>
+    <posacc>
+      <horizpa>
+        <horizpar>2017_05_23 control point RMSE was 0.005 meters,2017_05_24 control point RMSE was 0.007 meters,2017_05_25 control point RMSE was 0.001 meters</horizpar>
+      </horizpa>
+      <vertacc>
+        <vertaccr>2017_05_23 control point RMSE was 0.002 meters,2017_05_24 control point RMSE was 0.009 meters,2017_05_25 control point RMSE was 0.003 meters</vertaccr>
+      </vertacc>
+    </posacc>
+    <lineage>
+      <procstep>
+        <procdesc>Measurements of the flume headgate opening rate, debris flow thicknesses, basal normal forces, basal shear forces, and basal pore-fluid pressures were acquired with analog electronic sensors deployed at several locations along the length of the flume.  All sensor outputs (voltages) were sampled digitally at 1000 hertz (Hz) with a 14-bit data acquisition system. Empirical calibration factors, which were established for each sensor by repeated testing, were used to translate these voltages to the system of physical units (SI) tabulated here.</procdesc>
+        <procdate>2017</procdate>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <eainfo>
+    <detailed>
+      <enttyp>
+        <enttypl>2017_05_23_archive.csv, 2017_05_24_archive.csv, 2017_05_25_archive.csv</enttypl>
+        <enttypd>These files contain multiple columns of data, with each column representing either a time measurement or the value of a physical quantity.</enttypd>
+        <enttypds>Producer defined</enttypds>
+      </enttyp>
+      <attr>
+        <attrlabl>Time(s)</attrlabl>
+        <attrdef>Elapsed time, in seconds, since the flume headgate began to open.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>-5</rdommin>
+            <rdommax>60</rdommax>
+            <attrunit>time in seconds</attrunit>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>GateStatus(v)</attrlabl>
+        <attrdef>DC voltage offset in this data time series corresponds to the onset of opening of the flume headgate that releases debris.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>DC voltage</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>GateAngle(deg)</attrlabl>
+        <attrdef>The angle the flume gate is open in degrees, where 0 denotes a fully closed gate and 90 denotes a fully open gate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Degrees of gate rotation</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Nstress_-2.9m(kPa)</attrlabl>
+        <attrdef>Normal stress at the bed of the flume measured 2.9 meters upslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Normal stress in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Sstress_-2.3m(kPa)</attrlabl>
+        <attrdef>Shear stress at the bed of the flume measured 2.3 meters upslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Shear stress in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPa_-2.9m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of four sensors positioned 2.9 m upslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPb_-2.9m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of four sensors positioned 2.9 meters upslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPc_-2.9m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of four sensors positioned 2.9 meters upslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPd_-2.9m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of four sensors positioned 2.9 meters upslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Thickness_-2.3m(m)</attrlabl>
+        <attrdef>Flow thickness, measured normal to the flume bed at a position 2.5 meters upslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Thickness in meters</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Thickness_2.5m(m)</attrlabl>
+        <attrdef>Flow thickness, measured normal to the flume bed at a position 2.5 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Thickness in meters</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Thickness_31.7m(m)</attrlabl>
+        <attrdef>Flow thickness, measured normal to the flume bed at a position 31.7 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Thickness in meters</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Nstress_31.7m(kPa)</attrlabl>
+        <attrdef>Normal stress at the bed of the flume, measured 31.7 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Normal stress in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Sstress_32.3m(kPa)</attrlabl>
+        <attrdef>Shear stress at the bed of the flume, measured 32.3 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Shear stress in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPa_31.7m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of four sensors positioned 31.7 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPb_31.7m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of four sensors positioned 31.7 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPc_31.7m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of four sensors positioned 31.7 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPd_31.7m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of four sensors positioned 31.7 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Thickness_65.4m(m)</attrlabl>
+        <attrdef>Flow thickness, measured normal to the flume bed at a position 65.4 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Thickness in meters</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Nstress_65.4m(kPa)</attrlabl>
+        <attrdef>Normal stress at the bed of the flume, measured 65.4 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Normal stress in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Sstress_66.0m(kPa)</attrlabl>
+        <attrdef>Shear stress at the bed of the flume, measured 66.0 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Shear stress in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPa_65.4m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of three sensors positioned 65.4 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPb_65.4m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of three sensors positioned 65.4 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Thickness_80.0m(m)</attrlabl>
+        <attrdef>Flow thickness, measured normal to the flume bed at a position 80.0 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Thickness in meters</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Nstress_80.0m(kPa)</attrlabl>
+        <attrdef>Normal stress at the bed of the flume, measured 80.0 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Normal stress in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Sstress_79.4m(kPa)</attrlabl>
+        <attrdef>Shear stress at the bed of the flume, measured 79.4 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Shear stress in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPa_80.0m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of four sensors positioned 80.0 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPb_80.0m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of four sensors positioned 80.0 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPc_80.0m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of four sensors positioned 80.0 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPd_80.0m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of four sensors positioned 80.0 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Nstress_89.8m(kPa)</attrlabl>
+        <attrdef>Normal stress at the bed of the flume, measured 89.8 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Normal stress in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPa_89.8m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of three sensors positioned 89.8 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPb_89.8m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of three sensors positioned 89.8 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>PPc_89.8m(kPa)</attrlabl>
+        <attrdef>Pore pressure at the bed of the flume, measured by one of three sensors positioned 89.8 meters downslope from the foot of the flume headgate.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Pore pressure in kilopascals</udom>
+        </attrdomv>
+      </attr>
+    </detailed>
+    <overview>
+      <eaover>Three .pdf  files each illustrate two map views of deposits formed on the runout pad at the foot of the USGS debris-flow flume during experiments conducted in May, 2017.  In each file one map view depicts an overhead photograph of the deposit, and the other depicts an isopach map of deposit thicknesses (in meters) constructed photogrammetrically from stereo overhead photographs.  Top maps are superposed on an orthorectified background image of the concrete runout pad at the foot of the flume. Black grid lines painted on the runout pad have 1-meter spacing. Scales along the margins of the maps show distances in meters.  The numerals on the horizontal axis of each map correspond to local flume control points. The files are listed as 2017_05_23_FC_archive.pdf, 2017_05_24_FC_archive.pdf, 2017_05_25_FC_archive.pdf.</eaover>
+      <eadetcit>USGS ScienceBase-Catalog. https://doi.org/10.5066/P9NAFXW7</eadetcit>
+    </overview>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntperp>
+          <cntper>U.S. Geological Survey - ScienceBase</cntper>
+          <cntorg>U.S. Geological Survey - ScienceBase</cntorg>
+        </cntperp>
+        <cntaddr>
+          <addrtype>mailing and physical</addrtype>
+          <address>Denver Federal Center, Building 810, Mail Stop 302</address>
+          <city>Denver</city>
+          <state>CO</state>
+          <postal>80225</postal>
+          <country>U.S.</country>
+        </cntaddr>
+        <cntvoice>1-888-275-8747</cntvoice>
+        <cntemail>sciencebase@usgs.gov</cntemail>
+      </cntinfo>
+    </distrib>
+    <distliab>This dataset has been approved for release and publication by the U.S. Geological Survey (USGS). Although this dataset has been subjected to rigorous review and is substantially complete, the USGS reserves the right to revise the data pursuant to further analysis and review. The U.S. Geological Survey (USGS) provides these data "as is."  
+The USGS makes no guarantee or warranty concerning the accuracy of information contained in the data. The USGS further makes no warranties, either expressed or implied, as to any other matter whatsoever, including, and without limitation, the condition of the product or its fitness for any particular purpose. The burden for determining fitness for use lies entirely with the user. Although these data have been processed successfully on computers at the USGS, no warranty, expressed or implied, is made by the USGS regarding the use of these data on any other system, nor does the fact of distribution constitute or imply any such warranty. In no event shall the USGS nor the U.S. Government have any liability whatsoever for payment of any consequential, incidental, indirect, special, or tort damages of any kind, including,  but not limited  to, any loss of profits arising  out of use of or reliance on the geographic data or arising out of delivery, installation, operation, or support by USGS. Any use of trade, product or firm names is for descriptive purposes only and does not imply endorsement by the U.S. Government. The U.S. Geological Survey strongly recommends that careful attention be paid to the metadata file associated with these data. Any derivative products utilizing these datasets shall clearly indicate their source. If users modify the data in any way they are obligated to describe the types of modifications they have performed. User specifically agrees not to misrepresent these datasets, nor to imply that changes they made were approved by the U.S. Geological Survey. Acknowledgement of the U.S. Geological Survey would be appreciated in products derived from these data.</distliab>
+    <techpreq>The .csv  files are easily imported into a variety of commercial and open-source software packages.</techpreq>
+  </distinfo>
+  <metainfo>
+    <metd>20200827</metd>
+    <metc>
+      <cntinfo>
+        <cntperp>
+          <cntper>Maciej Obryk</cntper>
+          <cntorg>USGS</cntorg>
+        </cntperp>
+        <cntpos>Hydrologist</cntpos>
+        <cntaddr>
+          <addrtype>mailing and physical</addrtype>
+          <address>1300 SE Cardinal Ct. Building 10, Suite 100</address>
+          <city>Vancouver</city>
+          <state>Washington</state>
+          <postal>98683</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>360 993 8929</cntvoice>
+        <cntemail>mobryk@usgs.gov</cntemail>
+      </cntinfo>
+    </metc>
+    <metstdn>Content Standard for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001-1998</metstdv>
+  </metainfo>
+</metadata>

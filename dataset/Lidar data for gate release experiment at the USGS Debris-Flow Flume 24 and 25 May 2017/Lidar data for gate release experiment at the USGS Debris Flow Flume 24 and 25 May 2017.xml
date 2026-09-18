@@ -1,0 +1,277 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>Francis K Rengers</origin>
+        <origin>Michael Olsen</origin>
+        <pubdate>20210322</pubdate>
+        <title>Lidar data for gate release experiment at the USGS Debris Flow Flume 24 and 25 May 2017</title>
+        <geoform>.txt</geoform>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>Lidar data was collected on 24 and 25 May 2017 at the USGS debris-flow flume to monitor two gate-release debris flow experiments. A static prism of sediment was emplaced behind a gate at the top of the flume. Water was added via sprinklers to the surface and also via pipes to the subsurface, in order to saturate the sediment mass. The sediment mass moved down the flume as a debris flow when the gate was opened. Lidar data was collected from a Riegl VZ-400 terrestrial laser scanner to capture the mass failure. The lidar unit was modified to scan a narrow swath (approximately 1 mm) along the full profile of the constructed sediment mass. The lidar scan rate was set to re-scan every 0.017 s or at a rate of 60 Hz. The data contained herein ecapsulates entire lidar point cloud from the time before prior to movement through full failure of the sediment mass. The points are organized in rows. The columns are: ['xM', 'yM', 'zM', 'rangeM', 'thetaDEG', 'phiDEG', 'riegl_ref', 'timestampSEC', 'Line'] . The 'xM', 'yM', 'zM' values are the x, y, and z real world UTM coordinates with units of meters. The 'rangeM' is the distance of each point from the scanner with units of meters. The vertical angle of the lidar scanner is shown as 'thetaDEG' with units of degrees. Similarly, the horizontal angle of the lidar scanner is shown as 'phiDEG' with units of degrees. The 'riegl_ref' represents reflectance value computed from the intensity. The timestamp is the number of seconds since the beginning of the scan. The 'Line' column represents all the points that belong to a single lidar profile swath.</abstract>
+      <purpose>In order to monitor the geometry and velocity of an experimental debris flow</purpose>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <mdattim>
+          <sngdate>
+            <caldate>20170524</caldate>
+          </sngdate>
+          <sngdate>
+            <caldate>20170525</caldate>
+          </sngdate>
+        </mdattim>
+      </timeinfo>
+      <current>ground condition</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>None planned</update>
+    </status>
+    <spdom>
+      <bounding>
+        <westbc>-122.4097</westbc>
+        <eastbc>-122.0087</eastbc>
+        <northbc>44.2311</northbc>
+        <southbc>44.0182</southbc>
+      </bounding>
+    </spdom>
+    <keywords>
+      <theme>
+        <themekt>USGS Thesaurus</themekt>
+        <themekey>Debris Flow</themekey>
+      </theme>
+      <theme>
+        <themekt>USGS Metadata Identifier</themekt>
+        <themekey>USGS:5e4f2264e4b0ff554f70cce1</themekey>
+      </theme>
+      <place>
+        <placekt>HJ Andrews Experimental Forest</placekt>
+        <placekey>HJ Andrews Experimental Forest</placekey>
+      </place>
+    </keywords>
+    <accconst>none</accconst>
+    <useconst>none</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntperp>
+          <cntper>Francis K Rengers</cntper>
+          <cntorg>ROCKY MOUNTAIN REGION: GEOLOGIC HAZARDS SC</cntorg>
+        </cntperp>
+        <cntpos>RESEARCH GEOLOGIST</cntpos>
+        <cntaddr>
+          <addrtype>mailing and physical</addrtype>
+          <address>Mail Stop MS 966, 1711 Illinois St</address>
+          <city>Golden</city>
+          <state>CO</state>
+          <postal>80401</postal>
+          <country>US</country>
+        </cntaddr>
+        <cntvoice>303-273-8637</cntvoice>
+        <cntemail>frengers@usgs.gov</cntemail>
+      </cntinfo>
+    </ptcontac>
+  </idinfo>
+  <dataqual>
+    <attracc>
+      <attraccr>No formal attribute accuracy tests were conducted</attraccr>
+    </attracc>
+    <logic>No formal logical accuracy tests were conducted</logic>
+    <complete>Data set is considered complete for the information presented, as described in the abstract. Users are advised to read the rest of the metadata record carefully for additional details.</complete>
+    <lineage>
+      <procstep>
+        <procdesc>Standard lidar processing</procdesc>
+        <procdate>20170901</procdate>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <spdoinfo>
+    <indspref>Debris Flow Flume is located at the HJ Andrews Experimental Forest</indspref>
+    <direct>Raster</direct>
+  </spdoinfo>
+  <eainfo>
+    <detailed>
+      <enttyp>
+        <enttypl>170524_184440_prof_ts300-650_s1_editvcorr_header.txt</enttypl>
+        <enttypd>comma delimited text file.</enttypd>
+        <enttypds>Producer defined</enttypds>
+      </enttyp>
+      <attr>
+        <attrlabl>Unnamed: 0</attrlabl>
+        <attrdef>none</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>0</rdommin>
+            <rdommax>999999</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>xM</attrlabl>
+        <attrdef>Real-world X coordinates in UTM meters</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>559540.28686142</rdommin>
+            <rdommax>559588.31760406</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>yM</attrlabl>
+        <attrdef>Real-world Y coordinates in UTM meters</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>4895941.7411232</rdommin>
+            <rdommax>4896022.0359726</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>zM</attrlabl>
+        <attrdef>Real-world Z coordinates in UTM meters</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>445.53741455</rdommin>
+            <rdommax>489.02926636</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>rangeM</attrlabl>
+        <attrdef>'rangeM' is the distance of each point from the scanner with units of meters</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>2.5467310000000003</rdommin>
+            <rdommax>104.224518</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>thetaDEG</attrlabl>
+        <attrdef>The vertical angle of the lidar scanner is shown as 'thetaDEG' with units of degrees.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>66.31259200000001</rdommin>
+            <rdommax>129.935867</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>phiDEG</attrlabl>
+        <attrdef>Horizontal angle of the lidar scanner is shown as 'phiDEG' with units of degrees</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>355.1711430000001</rdommin>
+            <rdommax>355.535431</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>riegl_ref</attrlabl>
+        <attrdef>'riegl_ref' represents reflectance value computed from the intensity.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>-19.206919</rdommin>
+            <rdommax>-1.7998029999999998</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>timestampSEC</attrlabl>
+        <attrdef>The timestamp is the number of seconds since the beginning of the scan.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>300.0</rdommin>
+            <rdommax>312.162048</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Line</attrlabl>
+        <attrdef>The 'Line' column represents all the points that belong to a single lidar profile swath.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>435.0</rdommin>
+            <rdommax>1233.0</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+    </detailed>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntperp>
+          <cntper>Francis K Rengers</cntper>
+          <cntorg>ROCKY MOUNTAIN REGION: GEOLOGIC HAZARDS SC</cntorg>
+        </cntperp>
+        <cntpos>RESEARCH GEOLOGIST</cntpos>
+        <cntaddr>
+          <addrtype>mailing and physical</addrtype>
+          <address>Mail Stop MS 966, 1711 Illinois St</address>
+          <city>Golden</city>
+          <state>CO</state>
+          <postal>80401</postal>
+          <country>US</country>
+        </cntaddr>
+        <cntvoice>303-273-8637</cntvoice>
+        <cntemail>frengers@usgs.gov</cntemail>
+      </cntinfo>
+    </distrib>
+    <distliab>None</distliab>
+    <stdorder>
+      <digform>
+        <digtinfo>
+          <formname>Digital Data</formname>
+        </digtinfo>
+        <digtopt>
+          <onlinopt>
+            <computer>
+              <networka>
+                <networkr>https://doi.org/10.5066/P94GGE3G</networkr>
+              </networka>
+            </computer>
+          </onlinopt>
+        </digtopt>
+      </digform>
+      <fees>None</fees>
+    </stdorder>
+  </distinfo>
+  <metainfo>
+    <metd>20210322</metd>
+    <metc>
+      <cntinfo>
+        <cntperp>
+          <cntper>Francis K Rengers</cntper>
+          <cntorg>ROCKY MOUNTAIN REGION: GEOLOGIC HAZARDS SC</cntorg>
+        </cntperp>
+        <cntpos>RESEARCH GEOLOGIST</cntpos>
+        <cntaddr>
+          <addrtype>mailing and physical</addrtype>
+          <address>Mail Stop MS 966, 1711 Illinois St</address>
+          <city>Golden</city>
+          <state>CO</state>
+          <postal>80401</postal>
+          <country>US</country>
+        </cntaddr>
+        <cntvoice>303-273-8637</cntvoice>
+        <cntemail>frengers@usgs.gov</cntemail>
+      </cntinfo>
+    </metc>
+    <metstdn>Content Standard for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001-1998</metstdv>
+  </metainfo>
+</metadata>

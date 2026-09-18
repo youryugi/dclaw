@@ -23,3 +23,9 @@ docs/src/autodoc2
 *.mp4
 *.csv
 examples/idealized_slides/results
+
+# Generated products for the USGS 2017 flume validation.  The small,
+# reproducible summaries in validation/**/results remain versionable.
+validation/usgs_flume_2017/generated/
+validation/usgs_flume_2017/model/_output_*/
+validation/usgs_flume_2017/model/input_summary.json
