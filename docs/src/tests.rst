@@ -1,7 +1,56 @@
 Tests
 =====
 
-There is one test located in ``dclaw/tests/bowl-slosh`` and described below. Additional not-yet-ready tests are located in ``dclaw/tests/dev``. The applications within this test development directory are not expected to work.
+There are two tests, located in ``dclaw/tests/bowl-slosh`` and ``dclaw/tests/eigenstructure_check`` and described below. Additional not-yet-ready tests are located in ``dclaw/tests/dev``. The applications within this test development directory are not expected to work.
+
+
+Eigenstructure sanity checks
+-----------------------------
+
+Two small, fast checks of the granular-fluid (digclaw) solver's characteristic
+structure against closed-form results, located in ``dclaw/tests/eigenstructure_check``.
+Unlike the bowl-slosh test, which exercises the shallow-water reduction
+(:math:`m=0`) of the equations, these checks exercise the solid-volume-fraction
+and pore-pressure fields that are unique to D-Claw.
+
+Background
+^^^^^^^^^^
+
+With the lateral pressure coefficient :math:`\kappa` hardcoded to 1 in
+``digclaw_module.f90`` -- matching what Iverson & George (2014) and George &
+Iverson (2014) state they used for all of their flume comparisons -- the
+eigenvalues of the governing system (eq 2.24 of Iverson & George, 2014)
+reduce to the familiar shallow-water form :math:`\lambda = u \mp
+\sqrt{g_zh}` (nonlinear fields) and :math:`\lambda = u` (linearly
+degenerate/contact fields, eigenvector :math:`(0,0,0,1,0)` in eq 2.26 for
+the solid-volume-fraction field).
+
+Two properties following from this are checked:
+
+* **Contact-wave preservation.** A solid-volume-fraction jump in otherwise
+  still water of uniform depth, with hydrostatic pore pressure on both
+  sides, has zero net driving force everywhere and so should not move at
+  all.
+* **Dry dam-break front-speed bound.** A reservoir released from rest onto
+  a dry, frictionless bed cannot advance faster than the classical
+  frictionless shallow-water front speed, :math:`2\sqrt{gh_L}`; basal
+  friction and any residual dilatancy/compressibility effects can only slow
+  it down.
+
+See ``tests/eigenstructure_check/README.md`` for details and pass criteria.
+
+Instructions
+^^^^^^^^^^^^
+
+::
+
+	source tests/eigenstructure_check/environment.sh
+	cd tests/eigenstructure_check
+	make .exe
+	python3 check.py
+
+``check.py`` runs both cases end to end and exits non-zero if either check
+fails.
 
 
 Sloshing water in a parabolic bowl
