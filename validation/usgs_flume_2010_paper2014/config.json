@@ -1,0 +1,43 @@
+{
+  "description": "Reproduction of the SGM rough-bed gate-release experiments aggregated in Iverson et al. (2010, JGR 2009JF001514) and used as the validation target in George & Iverson (2014, Proc. R. Soc. A) Part II, using the paper's own Table 2/3 material parameters.",
+  "aggregate_dataset": "dataset/usgs_flume_2010/jgrf703-sup-0004-ds03.txt",
+  "flume_bed_source": "validation/usgs_flume_2017/generated/lidar/2017-05-25_lidar_profiles.npz",
+  "gauge_positions_m": [32.0, 66.0, 90.0],
+  "run": {
+    "volume_m3": 10.0,
+    "wedge_gate_height_m": 1.9,
+    "wedge_horizontal_extent_m": 3.3,
+    "gate_angle_profile": [[0.0, 0.0], [0.85, 90.0]]
+  },
+  "model": {
+    "flume_width_m": 2.0,
+    "initial_pore_pressure_ratio": 1.0,
+    "rho_f_kg_m3": 1100.0,
+    "rho_s_kg_m3": 2700.0,
+    "solid_volume_fraction": 0.62,
+    "critical_solid_fraction": 0.64,
+    "reference_solid_volume_fraction": 0.60,
+    "reference_permeability_m2": 5e-9,
+    "basal_friction_angle_deg": 40.7,
+    "characteristic_grain_size_m": 0.001,
+    "pore_fluid_viscosity_pa_s": 0.005,
+    "compressibility_constant": 0.024,
+    "reference_stress_pa": 1000.0,
+    "source_method": 0,
+    "compressibility_method": 0,
+    "use_finite_gate": true,
+    "gate_height_m": 1.9,
+    "amr_levels_max": 3,
+    "refinement_ratio": 2
+  },
+  "assumptions": [
+    "Domain extended to x=130 m (from the 2017 case's x=95 m) because the paper reports the gate-release front reaching x=112 m with deposition out to ~120 m on the run-out pad beyond the 95 m flume proper (figure 15); the previous x=95 m domain silently truncated the flow through its open outflow boundary right around the time the model front passed the x=90 m gauge, which was mistaken for physical drainage until a corrected (non-double-counted) AMR volume-conservation check caught the ~23% mass loss between t=7 and t=9 s. Bed elevation beyond the surveyed x=92 m is extrapolated at the LiDAR data's own near-flat end slope (~-0.04, ~2.3 deg), consistent with the paper's description of a planar run-out pad, but is not an actual survey of that ground.",
+    "Geometry now follows figure 11 of George & Iverson (2014) directly: volume=10 m3 (their stated round figure, not the 9.73 m3 mean of all 8 experiments from the 2010 JGR supplement), gate height 1.9 m at x=0, total horizontal extent 3.3 m. The paper's schematic shows an apparent flat-topped wedge rather than a simple triangle or rectangle; since a simple triangle of these dimensions integrates to only ~6.3 m3 (not 10 m3) and a rectangle would need a shorter length than 3.3 m, the initial pile is reconstructed as a trapezoid (flat top at 1.9 m height, sloping down to the bed at the upslope end) whose flat-top/ramp split is solved so the raster volume matches 10 m3 exactly while keeping the reported total extent (3.3 m) and gate height (1.9 m) fixed. This split (flat ~1.96 m, ramp ~1.34 m) is a reconstruction, not a digitized reading of the figure.",
+    "amr_levels_max=3 with refinement_ratio=2 per axis (net 4x finer than the base 0.25 m grid) approximates the paper's statement that its gate-release simulation used three levels of AMR; the paper does not publish exact grid counts or refinement ratios.",
+    "compressibility_constant (a in alpha=a/(m*(rho*gz*h - pb + sigma0))) is recalibrated to 0.024 so that, evaluated at the initial gate-wall depth (h=1.9 m, m0=0.62, hydrostatic pb), it reproduces the paper's stated model value alpha0=2.0e-6 Pa^-1 (table 2) rather than the previously reused, unverified a=0.01 from the 2017 case.",
+    "gate_angle_profile approximates the paper's reported ~0.85 s gate-opening time as a linear ramp; the paper does not publish a measured angle-vs-time curve.",
+    "initial_pore_pressure_ratio=1.0 (fully hydrostatic) matches table 2's 'basal fluid pressure head at failure: hydrostatic' for both measured and model values.",
+    "Channel topography is reused from the 2017-05-25 LiDAR bed reconstruction because the flume itself is the same fixed concrete structure; no 2010-specific topographic survey is available in this repository. Bed roughness differences between experiment subsets are represented only through the basal friction angle, not through the topography.",
+    "sigma (total basal normal stress) is approximated from the model as rho_bar * g * h * cos(theta) for comparison purposes; D-Claw's gauge output does not directly report a total normal stress channel."
+  ]
+}

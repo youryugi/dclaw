@@ -1,0 +1,32 @@
+{
+  "target_volume_m3": 10.0,
+  "raster_volume_m3": 10.000079999999999,
+  "model_parameters": {
+    "flume_width_m": 2.0,
+    "initial_pore_pressure_ratio": 1.0,
+    "rho_f_kg_m3": 1100.0,
+    "rho_s_kg_m3": 2700.0,
+    "solid_volume_fraction": 0.62,
+    "critical_solid_fraction": 0.64,
+    "reference_solid_volume_fraction": 0.6,
+    "reference_permeability_m2": 5e-09,
+    "basal_friction_angle_deg": 40.7,
+    "characteristic_grain_size_m": 0.001,
+    "pore_fluid_viscosity_pa_s": 0.005,
+    "compressibility_constant": 0.024,
+    "reference_stress_pa": 1000.0,
+    "source_method": 0,
+    "compressibility_method": 0,
+    "use_finite_gate": true,
+    "gate_height_m": 1.9,
+    "amr_levels_max": 3,
+    "refinement_ratio": 2
+  },
+  "bed_slope": -0.592441338196857,
+  "slope_angle_deg": 30.644253635255673,
+  "slope_cosine": 0.8603486011480814,
+  "gate_height_m": 1.9,
+  "horizontal_extent_m": 3.3,
+  "flat_length_m": 2.6315789473684212,
+  "ramp_length_m": 0.0
+}
