@@ -88,7 +88,7 @@ def _centre_values(name, xc):
 class Flume:
     """Grid, initial state, moving bed and gauge cells at resolution dx."""
 
-    def __init__(self, dx=0.125, t_obs=15.0, obs_dt=0.5, n_steps=None):
+    def __init__(self, dx=0.125, t_obs=15.0, obs_dt=0.5, n_steps=None, gauges_x=None):
         self.dx = dx
         nx = int(round((X_HI - X_LO) / dx))
         self.grid = Grid(nx=nx, ny=2, dx=dx, dy=1.0)
@@ -106,9 +106,15 @@ class Flume:
         # initial state is smooth in vol (no cell switching on/off as vol changes)
         self.h_base, self.m_base, self.rho_f, self.gz = col(h), col(m), rho_f, gz
         self.bed = gate_bed(col(basal - ridge), col(ridge), [0.0, 0.85], [0.0, 90.0])
-        right = np.searchsorted(self.x, GAUGES_X)
-        assert np.allclose(self.x[right] - GAUGES_X, dx / 2)
+        # gauges: linear interpolation between the two cell centres around each gauge when both are
+        # wet (the reference's gauges_module), else the nearer cell. Default: GAUGES_X, which sit on
+        # cell edges (weight 1/2 -- identical to the earlier plain average).
+        gx = np.asarray(GAUGES_X if gauges_x is None else gauges_x, float)
+        right = np.searchsorted(self.x, gx)
         self.gl, self.gr = jnp.asarray(right - 1), jnp.asarray(right)
+        self.gw = jnp.asarray((gx - self.x[right - 1]) / dx)          # weight of the right cell
+        self.gnear = jnp.asarray(np.where(self.gw >= 0.5, right, right - 1))
+        self.gauges_x = gx
         self.t_obs, self.obs_dt = t_obs, obs_dt
         self.n_obs_t = int(round(t_obs / obs_dt))
         self.obs_times = obs_dt * np.arange(1, self.n_obs_t + 1)
@@ -133,7 +139,7 @@ class Flume:
         def gauge(q):
             qa, qb = q[:, self.gl, 0], q[:, self.gr, 0]
             wet = (qa[0] > 1e-3) & (qb[0] > 1e-3)
-            g = jnp.where(wet[None], 0.5 * (qa + qb), qb)
+            g = jnp.where(wet[None], (1.0 - self.gw) * qa + self.gw * qb, q[:, self.gnear, 0])
             return jnp.stack([g[0], g[4] / 1e3])
 
         def body(carry, _):
@@ -150,7 +156,7 @@ class Flume:
         if scan_steps is not None:
             # fixed-length scan with blocked checkpointing: reverse-mode differentiable
             # (the while_loop below is not), memory ~ (n/block + block) states
-            obs0 = jnp.zeros((self.n_obs_t, 2, len(GAUGES_X)), dtype=q0.dtype)
+            obs0 = jnp.zeros((self.n_obs_t, 2, len(self.gauges_x)), dtype=q0.dtype)
             carry = (jnp.asarray(0.0, q0.dtype), q0, obs0)
             if scan_steps % block:
                 raise ValueError("scan_steps must be a multiple of block")
@@ -158,7 +164,7 @@ class Flume:
             carry, _ = jax.lax.scan(lambda c, _: (inner(c), None), carry, None, length=scan_steps // block)
             t, q, obs = carry
             return obs, t
-        obs0 = jnp.zeros((self.n_obs_t, 2, len(GAUGES_X)), dtype=q0.dtype)
+        obs0 = jnp.zeros((self.n_obs_t, 2, len(self.gauges_x)), dtype=q0.dtype)
         # while_loop, not scan: stops at t_obs (a fixed-length scan wastes the
         # steps left over after the fastest-stepping particle), and forward-mode
         # derivatives (jvp / jacfwd), which is what the samplers use, go through

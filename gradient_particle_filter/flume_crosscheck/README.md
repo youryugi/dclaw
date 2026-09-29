@@ -17,6 +17,13 @@ python summarize.py "label=file.npz" ...                 # 多个 JAX 运行一�
 `run_jax.py` 的环境变量只影响本次运行，不改包：`JAX_DX`（网格）、`JAX_DRY_TOL`（薄层阈值，经 `../flume_solver.py`）、
 `JAX_RECON`（`audusse` / `chen_noelle`）、`JAX_UTAPER`、`JAX_OUT`。
 
+## 注意：测点位置（2026-09-29 发现）
+
+模型的 x 是水平距离，而 USGS 公布的测点位置（32、66、90 m）是沿水槽的距离。本目录和
+`validation/usgs_flume_2010_paper2014` 都把测点放在了 x = 32、66、90 m，按床面弧长换算，真实位置应为
+x = 27.50、56.65、79.19 m（见 `../pf_flume/realdata.py`）。这**不影响** JAX 与 Fortran 之间的对比（两者用的是同一组位置），
+但影响任何与实测数据的对比。
+
 ## 输入一致性
 
 地形、初始料堆、固体体积分数全部读自 Fortran 自己的 `.tt3`；初始 h 与 Fortran `fort.q0000` 的最大差 **4e-16 m**，
