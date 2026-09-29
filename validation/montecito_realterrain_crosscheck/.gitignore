@@ -1,0 +1,6 @@
+# regenerable: build_inputs.py, xdclaw runs, run_jax.py
+*.npy
+!calibrated_theta.npy
+*.npz
+*.asc
+_output*/

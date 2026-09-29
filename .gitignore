@@ -29,3 +29,7 @@ examples/idealized_slides/results
 validation/usgs_flume_2017/generated/
 validation/usgs_flume_2017/model/_output_*/
 validation/usgs_flume_2017/model/input_summary.json
+
+dataset/code_and_data_archive.zip
+
+dataset/differentiable/Photos_9January2018_Montecito_Debris-Flow_Event.zip

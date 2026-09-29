@@ -1,0 +1,7 @@
+fortran_run/fort.*
+fortran_run/*.tt3
+fortran_run/run.log
+fortran_run/timing.*
+fortran_run/gauge*.txt
+*.npz
+__pycache__/

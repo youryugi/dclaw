@@ -1,0 +1,10 @@
+---
+name: run-prodf
+channels:
+  - conda-forge
+dependencies:
+  - main::python>=3.8
+  - poetry
+  - pip
+  - scipy
+  - h5py
