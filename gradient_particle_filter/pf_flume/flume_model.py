@@ -46,6 +46,11 @@ PARAM_SETS = {
               truth=np.array([40.7, np.log10(5e-9), np.log10(0.024), 0.62, 0.64, 1.0, 1.0]),
               lo=np.array([34.0, -10.0, -2.5, 0.55, 0.60, 0.6, 0.8]),
               hi=np.array([46.0, -7.0, -1.0, 0.66, 0.68, 1.2, 1.2])),
+    # as "3" with a wider alpha_c prior (up to 1): on the real flume data log10 alpha_c piles up
+    # against the "3" upper bound of -1
+    "3w": dict(names=("phi_deg", "log10 kref", "log10 alpha_c"),
+               truth=np.array([40.7, np.log10(5e-9), np.log10(0.024)]),
+               lo=np.array([34.0, -10.0, -2.5]), hi=np.array([46.0, -7.0, 0.0])),
     # as "7" but with dm = m_crit - m0 in place of m_crit: the 7-parameter posterior is a
     # ridge along which m0 and m_crit move together (only their difference is pinned)
     "7d": dict(names=("phi_deg", "log10 kref", "log10 alpha_c", "m0", "dm", "p_ratio", "vol"),

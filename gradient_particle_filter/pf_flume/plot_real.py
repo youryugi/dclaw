@@ -19,7 +19,8 @@ from parse_ds03 import load_sections
 
 INK, INK2, SURF, GRID = "#0b0b0b", "#52514e", "#fcfcfb", "#e4e3df"
 SERIES = {"robust2": ("#2a78d6", "gradient: robust Laplace"), "smc_rw": ("#eb6834", "no gradient: tempered SMC-RW"),
-          "robust2_wide": ("#2a78d6", "gradient: two-stage Laplace")}
+          "robust2_wide": ("#2a78d6", "gradient: two-stage Laplace"),
+          "esmda_k4": ("#1baf7a", "no gradient: ES-MDA (K=4)"), "esmda_k8": ("#1baf7a", "no gradient: ES-MDA (K=8)")}
 
 d_dir = Path(sys.argv[1])
 files = sys.argv[2:] or [f.name for f in sorted(d_dir.glob("*.npz"))]
@@ -28,7 +29,8 @@ first = next(iter(runs.values()))
 t, mask, sigma = first["obs_times"], first["mask"], first["sigma"]
 calib = [g for g in range(3) if mask[:, :, g].any()]
 # paper-parameter run for reference
-prob, R = RD.problem(params="3")
+_, R = RD.problem(params="3", dx=float(first["dx"]) if "dx" in first.files else 0.125,
+                  pb_conv=str(first["pb_conv"]) if "pb_conv" in first.files else "cos2")
 paper = np.asarray(jax.jit(R.simulate)(jnp.asarray(M.PARAM_SETS["3"]["truth"]))[0])
 S = load_sections()
 

@@ -57,16 +57,30 @@ class Problem:
     batch: int = 256            # particles per device call
     mask: np.ndarray = None     # 1 = observed, 0 = not used (default: all)
     n_t_used: int = None        # use only the first n_t_used observation times (default: all)
+    ar1: float = 0.0            # AR(1) correlation of consecutive residuals in each series (0 = independent)
 
     def __post_init__(self):
         y, sig = jnp.asarray(self.y), jnp.asarray(self.sigma)
         mask = jnp.ones_like(y) if self.mask is None else jnp.asarray(self.mask, dtype=y.dtype)
         self._mask = mask
 
+        rho = float(self.ar1)
+
+        def whiten(r):
+            """AR(1) residuals along time within each observed series: the first observed entry
+            stays, later ones become (r_t - rho r_{t-1}) / sqrt(1 - rho^2) (exact for a stationary
+            AR(1) with unit marginal variance; the log-determinant is a constant)."""
+            if rho == 0.0:
+                return r
+            prev_r = jnp.concatenate([jnp.zeros_like(r[:1]), r[:-1]])
+            prev_m = jnp.concatenate([jnp.zeros_like(mask[:1]), mask[:-1]])
+            w = jnp.where(prev_m > 0, (r - rho * prev_r) / jnp.sqrt(1.0 - rho ** 2), r)
+            return w * mask
+
         def terms(z):
             """log-likelihood contribution of each observation time, shape (n_t,)."""
             obs, _ = self.simulate(to_theta(z))
-            r = (obs - y) / sig * mask
+            r = whiten((obs - y) / sig * mask)
             return -0.5 * jnp.sum((r * r).reshape(r.shape[0], -1), axis=1)
 
         def loglik(z):
@@ -77,7 +91,7 @@ class Problem:
         def resid(z):
             """all observation times, flattened time-major (callers slice a prefix)."""
             obs, _ = self.simulate(to_theta(z))
-            return ((obs - y) / sig * mask).ravel()
+            return whiten((obs - y) / sig * mask).ravel()
 
         self._terms = jax.jit(jax.vmap(terms))
         self._obs = jax.jit(jax.vmap(lambda z: self.simulate(to_theta(z))[0]))
@@ -109,7 +123,12 @@ class Problem:
         return self._batched(self._obs, Z)
 
     def terms_from_obs(self, O):
-        r = (O - self.y[None]) / self.sigma[None] * np.asarray(self._mask)[None]
+        m = np.asarray(self._mask)[None]
+        r = (O - self.y[None]) / self.sigma[None] * m
+        if self.ar1:
+            pr = np.concatenate([np.zeros_like(r[:, :1]), r[:, :-1]], 1)
+            pm = np.concatenate([np.zeros_like(m[:, :1]), m[:, :-1]], 1)
+            r = np.where(pm > 0, (r - self.ar1 * pr) / np.sqrt(1 - self.ar1 ** 2), r) * m
         return -0.5 * (r * r).reshape(r.shape[0], r.shape[1], -1).sum(-1)
 
     def loglik_terms(self, Z):
@@ -765,3 +784,35 @@ def robust2_laplace(prob: Problem, n: int, seed: int = 0, m_screen=512, k_starts
             print(f"  stage {len(stages):3d}: beta={beta:.3e} acc={acc / n_moves:.2f} t={time.time() - t0:.0f}s", flush=True)
     info["stages"] = stages
     return Z, np.zeros(n), time.time() - t0, info
+
+
+def esmda(prob: Problem, n: int, n_assim: int = 4, seed: int = 0, verbose: bool = False):
+    """Ensemble smoother with multiple data assimilation (Emerick & Reynolds 2013) -- the
+    gradient-free workhorse of geoscience inversion. An ensemble of n parameter vectors (in z,
+    drawn from the prior) is updated n_assim times with the data, each time with the
+    observation-error covariance inflated by alpha = n_assim (sum 1/alpha = 1):
+        z_j <- z_j + C_zd (C_dd + alpha R)^-1 (y + sqrt(alpha) R^1/2 eps_j - g(z_j)),
+    with C_zd, C_dd the ensemble (cross-)covariances of parameters and simulated data. Uses only
+    forward runs (n * n_assim). Exact for a linear-Gaussian problem; for a nonlinear, curved or
+    multimodal posterior an approximation. Returns (Z, equal log weights, wall time)."""
+    rng = np.random.default_rng(seed)
+    t0 = time.time()
+    m = np.asarray(prob._mask).astype(bool)
+    y = prob.y[m]
+    sig = prob.sigma[m]
+    Z = rng.logistic(size=(n, dim()))
+    alpha = float(n_assim)
+    for k in range(n_assim):
+        D = prob.obs(Z)[:, m]                                       # (n, n_obs)
+        dz = Z - Z.mean(0)
+        dd = D - D.mean(0)
+        Czd = dz.T @ dd / (n - 1)
+        Cdd = dd.T @ dd / (n - 1)
+        pert = y[None] + np.sqrt(alpha) * sig[None] * rng.normal(size=D.shape)
+        K = np.linalg.solve(Cdd + alpha * np.diag(sig ** 2), Czd.T).T   # (d, n_obs)
+        Z = Z + (pert - D) @ K.T
+        if verbose:
+            misfit = np.mean(np.sum(((D - y[None]) / sig[None]) ** 2, 1))
+            print(f"  ES-MDA step {k + 1}/{n_assim}: mean chi^2 before update {misfit:.1f} ({len(y)} obs), "
+                  f"t={time.time() - t0:.0f}s", flush=True)
+    return Z, np.zeros(n), time.time() - t0

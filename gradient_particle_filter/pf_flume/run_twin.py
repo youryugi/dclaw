@@ -79,6 +79,7 @@ if __name__ == "__main__":
     ap.add_argument("--screen", type=int, default=256, help="prior draws screened (robust_laplace)")
     ap.add_argument("--params", default="3", help="parameter set: 3, 7 or 7d (see flume_model.PARAM_SETS)")
     ap.add_argument("--merge_sd", type=float, default=0.5, help="merge converged GN points closer than this (sd)")
+    ap.add_argument("--esmda_k", type=int, default=4, help="ES-MDA assimilation steps")
     ap.add_argument("--inflate", type=float, default=1.5, help="Laplace covariance inflation (robust2)")
     ap.add_argument("--dof", type=float, default=5.0, help="t degrees of freedom (robust2)")
     ap.add_argument("--adapt", type=int, default=0, help="adaptive IS rounds (robust2)")
@@ -119,6 +120,9 @@ if __name__ == "__main__":
         a.method = f"{a.method}_k{a.k}_m{a.screen}"
         extra = dict(is_ess=info["is_ess"], t_is=info["t_is"], n_modes=len(info["modes"]),
                      modes=np.array([m[0] for m in info["modes"]]), stages=np.array(info.get("stages", [])))
+    elif a.method == "esmda":
+        Z, logw, wall = I.esmda(prob, a.N, n_assim=a.esmda_k, seed=a.seed, verbose=True)
+        a.method = f"esmda_k{a.esmda_k}"
     elif a.method in ("robust2_laplace_is", "robust2_laplace_smc"):
         Z, logw, wall, info = I.robust2_laplace(prob, a.N, seed=a.seed, m_screen=a.screen, k_starts=a.k,
                                                 merge_sd=a.merge_sd, tempering=a.method.endswith("smc"), verbose=True,

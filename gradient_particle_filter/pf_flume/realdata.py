@@ -49,11 +49,14 @@ def horizontal_positions(along, smooth_m=2.5):
 
 
 class RealFlume:
-    def __init__(self, dx=0.125, t_obs=30.0, obs_dt=0.5):
+    def __init__(self, dx=0.125, t_obs=30.0, obs_dt=0.5, pb_conv="cos2"):
+        """pb_conv: how the model's pb is compared with the measured bed-normal pbed --
+        "cos2" (hydrostatic slope-parallel column, the default), "cos", or "none"."""
         self.gx, self.slope_deg = horizontal_positions(ALONG_FLUME)
         self.F = M.Flume(dx=dx, t_obs=t_obs, obs_dt=obs_dt, gauges_x=self.gx)
         self.cos = np.cos(np.radians(self.slope_deg))
-        self.fac = jnp.asarray(np.stack([self.cos, self.cos ** 2]))[None]   # (1, 2 vars, 3 gauges)
+        pbf = {"cos2": self.cos ** 2, "cos": self.cos, "none": np.ones_like(self.cos)}[pb_conv]
+        self.fac = jnp.asarray(np.stack([self.cos, pbf]))[None]   # (1, 2 vars, 3 gauges)
 
     def simulate(self, theta):
         obs, t = self.F.simulate(theta)
@@ -76,17 +79,18 @@ def observations(obs_times, model_floor=(0.01, 0.1), model_frac=0.1):
     return y, sigma, mask
 
 
-def problem(params="3", model_floor=(0.01, 0.1), model_frac=0.1, dx=0.125, calib_gauges=(0, 1, 2)):
+def problem(params="3", model_floor=(0.01, 0.1), model_frac=0.1, dx=0.125, calib_gauges=(0, 1, 2),
+            pb_conv="cos2", ar1=0.0):
     """calib_gauges: which gauges enter the likelihood (0, 1, 2 = along-flume 32, 66, 90 m); the
     others are simulated but masked -- held out for prediction."""
     ps = M.use_param_set(params)
     I.set_prior(ps["lo"], ps["hi"])
-    R = RealFlume(dx=dx)
+    R = RealFlume(dx=dx, pb_conv=pb_conv)
     y, sigma, mask = observations(R.F.obs_times, model_floor, model_frac)
     for g in range(3):
         if g not in calib_gauges:
             mask[:, :, g] = 0.0
-    return I.Problem(simulate=R.simulate, y=y, sigma=sigma, mask=mask, batch=256), R
+    return I.Problem(simulate=R.simulate, y=y, sigma=sigma, mask=mask, batch=256, ar1=ar1), R
 
 
 if __name__ == "__main__":
